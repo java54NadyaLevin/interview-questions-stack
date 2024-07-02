@@ -1,33 +1,56 @@
 package telran.interviews;
+
+import java.util.NoSuchElementException;
+import java.util.Stack;
+
 //All methods should have complexity O[1]
 public class MyStackInt {
-//TODO
+	Stack<Integer> stack = new Stack<>();
+	int max;
+
+	public MyStackInt(Integer[] numbers) {
+		for (Integer i : numbers) {
+			this.stack.push(i);
+			countMax(i);
+		}
+	}
+
 	public void push(int num) {
-		//TODO
-		//adds num into top of stack (last element)
+		countMax(num);
+		stack.push(num);
 	}
+
+	private void countMax(int num) {
+		if (isEmpty()) {
+			max = num;
+		} else {
+			max = num > max ? num : max;
+		}
+	}
+
 	public int pop() {
-		//TODO
-		//removes element from top of stack (last element)
-		//returns being removed number
-		//throws exception if the stack is empty
-		return -1;
+		checkIfEmpty();
+		return stack.pop();
 	}
+
 	public int peek() {
-		//TODO
-		//returns last number
-		//throws exception if the stack is empty
-		return -1;
+		checkIfEmpty();
+		return stack.peek();
 	}
+
 	public boolean isEmpty() {
-		//TODO
-		//returns true if the stack is empty, otherwise false
-		return false;
+		return stack.size() < 1;
 	}
+
 	public int getMaxElement() {
-		//TODO
-		//returns the max number from the stack
-		//throws exception if the stack is empty
-		return -1;
+		checkIfEmpty();
+		return max;
+	}
+
+	private void checkIfEmpty() {
+		if (isEmpty()) {
+			throw new NoSuchElementException("Stack is empty");
+		}
+		
 	}
 }
