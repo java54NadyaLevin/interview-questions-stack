@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 //All methods should have complexity O[1]
 public class MyStackInt {
 	LinkedList<Integer> stack = new LinkedList<>();
+	LinkedList<Integer> maxList = new LinkedList<>();
 	int max;
 
 
@@ -20,11 +21,19 @@ public class MyStackInt {
 		} else {
 			max = num > max ? num : max;
 		}
+		if(max == num) {
+			maxList.addLast(max);
+		}
 	}
 
 	public int pop() {
 		checkIfEmpty();
-		return stack.removeLast();
+		int removed = stack.removeLast();
+		if(removed == max) {
+			maxList.removeLast();
+			max = maxList.getLast();
+		}
+		return removed;
 	}
 
 	public int peek() {

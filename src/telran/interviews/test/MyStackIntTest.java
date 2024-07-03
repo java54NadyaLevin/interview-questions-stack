@@ -41,6 +41,8 @@ class MyStackIntTest {
 	@Test
 	void getMaxElementTest() {
 		assertEquals(30, stack.getMaxElement());
+		stack.push(100); stack.push(200); stack.push(300); stack.pop(); 
+		assertEquals(200, stack.getMaxElement());
 		stack = new MyStackInt();
 		assertThrowsExactly(NoSuchElementException.class, () -> stack.peek());
 	}
