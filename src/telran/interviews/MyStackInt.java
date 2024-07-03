@@ -1,17 +1,13 @@
 package telran.interviews;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 //All methods should have complexity O[1]
 public class MyStackInt {
-	LinkedList<Integer> stack;
+	LinkedList<Integer> stack = new LinkedList<>();
 	int max;
 
-	public MyStackInt(Integer[] numbers) {
-		stack = new LinkedList<>(List.of(numbers));
-	}
 
 	public void push(int num) {
 		countMax(num);
@@ -37,7 +33,8 @@ public class MyStackInt {
 	}
 
 	public boolean isEmpty() {
-		return stack.getFirst() == 0;
+		
+		return stack == null;
 	}
 
 	public int getMaxElement() {
