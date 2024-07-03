@@ -11,8 +11,7 @@ import telran.interviews.AutoCompletion;
 class AutoCompletionTest {
 String [] words = {"ab", "ABC", "avfdr", "aV", "aVV", "aaA"};
 String [] wordsAb = {"ab", "ABC"};
-//String [] wordsAv = {"aV", "aVV", "avfdr"}; is this particular sequence important?
-String [] wordsAv = {"aV", "avfdr", "aVV"};
+String [] wordsAv = {"aV", "aVV", "avfdr"}; 
 String [] wordsAa = {"aaA"};
 	@Test
 	void test() {
@@ -20,6 +19,9 @@ String [] wordsAa = {"aaA"};
 		for(String word: words) {
 			autoCompletion.addWord(word);
 		}
+		Arrays.sort(wordsAv, String.CASE_INSENSITIVE_ORDER);
+		Arrays.sort(wordsAb, String.CASE_INSENSITIVE_ORDER);
+		Arrays.sort(wordsAa, String.CASE_INSENSITIVE_ORDER);
 		assertArrayEquals(wordsAb, autoCompletion.getVariants("ab"));
 		assertArrayEquals(wordsAv, autoCompletion.getVariants("av"));
 		assertArrayEquals(wordsAa, autoCompletion.getVariants("aa"));
