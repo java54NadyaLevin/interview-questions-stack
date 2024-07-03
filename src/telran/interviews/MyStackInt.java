@@ -14,7 +14,7 @@ public class MyStackInt {
 	}
 
 	private void countMax(int num) {
-		if (isEmpty() || num > maxList.getLast()) {
+		if (isEmpty() || num >= maxList.getLast()) {
 			maxList.addLast(num);
 		}
 	}
