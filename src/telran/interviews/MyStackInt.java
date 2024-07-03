@@ -14,15 +14,13 @@ public class MyStackInt {
 	}
 
 	private void countMax(int num) {
-		if (!isEmpty() && num > maxList.getLast()) {
-			maxList.addLast(num);
-		}else if(isEmpty()){
+		if (isEmpty() || num > maxList.getLast()) {
 			maxList.addLast(num);
 		}
 	}
 
 	public int pop() {
-		checkIfEmpty();
+		
 		int removed = stack.removeLast();
 		if(removed == maxList.getLast()) {
 			maxList.removeLast();
