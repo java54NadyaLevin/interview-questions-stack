@@ -39,14 +39,7 @@ public class MyStackInt {
 	}
 
 	public int getMaxElement() {
-		checkIfEmpty();
 		return maxList.getLast();
 	}
 
-	private void checkIfEmpty() {
-		if (isEmpty()) {
-			throw new NoSuchElementException("Stack is empty");
-		}
-		
-	}
 }
